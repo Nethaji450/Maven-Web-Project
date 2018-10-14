@@ -18,7 +18,11 @@ node {
 	   
       stage('Sonar') {
                     //add stage sonar
-                  sh 'mvn sonar:sonar'
+	       def mvn_version = 'M2_HOME'
+          withEnv( ["PATH+MAVEN=${tool mvn_version}/bin"] ) {
+          sh "mvn sonar:sonar"
+       // bat "mvn clean package"          
+       }
                 }
        
 }
