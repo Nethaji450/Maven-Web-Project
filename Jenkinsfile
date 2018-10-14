@@ -24,5 +24,14 @@ node {
        // bat "mvn clean package"          
        }
                 }
+	stage ('deploy to tom') {
+			sshagent(['tomcat-ssh']) {
+    // some block
+sh '''scp /target/*.war ec2-user@10.1.3.47:/opt/apache-tomcat-8.0.53/webapps'''
+
+}
+
+	}
+
        
 }
